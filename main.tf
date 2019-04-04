@@ -29,6 +29,8 @@ resource "null_resource" "docker" {
   }
 }
 
-data "external" "ensure_config" {
-  program = ["bash", "echo \"{}\" | tee ${path.cwd}/config.json"]
+resource "null_resource" "ensure_config" {
+  data "external" "ensure_config" {
+    program = ["bash", "echo \"{}\" | tee ${path.cwd}/config.json"]
+  }
 }
