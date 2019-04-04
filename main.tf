@@ -22,7 +22,7 @@ resource "kubernetes_secret" "default" {
 }
 
 resource "null_resource" "docker" {
-  depends_on = ["external.ensure_config"]
+  depends_on = ["null_resource.ensure_config"]
   # Run docker login
   provisioner "local-exec" {
     command = "export DOCKER_CONFIG=${path.cwd} && docker login ${var.docker_username}.azurecr.io -u ${var.docker_username} -p ${var.docker_password}"
