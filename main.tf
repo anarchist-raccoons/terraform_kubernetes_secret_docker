@@ -16,7 +16,8 @@ resource "kubernetes_secret" "default" {
   }
   data = {
 #    ".dockerconfigjson" = "${file("${path.cwd}/config.json")}"
-    ".dockerconfigjson" = file(join("/", [path.cwd, "config.json"]))
+#    ".dockerconfigjson" = file(join("/", [path.cwd, "config.json"]))
+    ".dockerconfigjson" = "${file("${path.module}/.docker/config.json")}"
   }
   type = "kubernetes.io/dockerconfigjson"
 }
