@@ -10,7 +10,7 @@ provider "kubernetes" {
 
 # Secret for docker login
 resource "kubernetes_secret" "default" {
-  depends_on = ["null_resource.docker"]
+  depends_on = [null_resource.docker]
   
   metadata {
     name = var.kubernetes_secret
